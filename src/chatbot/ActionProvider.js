@@ -16,11 +16,28 @@ class ActionProvider {
       { withAvatar: true }
     );
     this.addMessageToState(message);
-    this.addPhone();
-    this.addEmail();
+    //phone
+    let phoneNumber = this.createChatBotMessage("cell: (707)-580-2245", {
+      withAvatar: false,
+      delay: 1000,
+    });
+    this.addMessageToState(phoneNumber);
+    //email
+    let emailPrompt = this.createChatBotMessage("or send an email to: ", 
+      { withAvatar: true, delay: 1500 });
+    this.addMessageToState(emailPrompt);
+    let email = this.createChatBotMessage("alexjmendoza514@gmail.com", {
+      withAvatar: false, delay: 1500,
+    });
+    this.addMessageToState(email); 
   };
 
   addPhone() {
+    let message = this.createChatBotMessage( "Give me a call at: ",
+       { withAvatar: true }
+    );
+    this.addMessageToState(message);
+
     let phoneNumber = this.createChatBotMessage(
       "cell: (707)-580-2245",
       { withAvatar: false , delay: 1000 }
@@ -29,14 +46,15 @@ class ActionProvider {
   }
 
   addEmail() {
-    let message = this.createChatBotMessage("or send an email to: ", 
-      {  withAvatar: true, delay: 1500 }
-    );
+    let message = this.createChatBotMessage("Reach me at: ", {
+      withAvatar: true,
+    });
     this.addMessageToState(message);
-    let phoneNumber = this.createChatBotMessage(
-      "alexjmendoza514@gmail.com",
-      { withAvatar: false, delay: 1500 }
-    );
+
+    let phoneNumber = this.createChatBotMessage("alexjmendoza514@gmail.com", {
+      withAvatar: false,
+      delay: 1000,
+    });
     this.addMessageToState(phoneNumber);
   }
 
