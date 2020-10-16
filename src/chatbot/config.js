@@ -1,19 +1,40 @@
 import React from 'react';
 import { createChatBotMessage } from "react-chatbot-kit";
+import Overview from '../components/overview/Overview'
+import BotAvatar from "../components/botAvatar/BotAvatar";
 
 const config = {
   botName: "AlexBot",
   initialMessages: [
-    createChatBotMessage(`Hello! Welcome to this demo chat bot program. What would you like to know?`, { 
-      widget: 'options',
+    createChatBotMessage(`Hello! Welcome to this demo chat bot program`),
+    createChatBotMessage(`What would you like to see?`, {
+      widget: "overview",
+      withAvatar: true,
     }),
   ],
-  // widgets: [
-  //   {
-  //     widgetName: "options",
-  //     widgetFunc: (props) => <Options {...props} />,
-  //   },
-  // ],
+  customComponents: {
+    botAvatar: (props) => < BotAvatar {...props} />,
+  },
+  customStyles: {
+    // Overrides the chatbot message styles
+    botMessageBox: {
+      backgroundColor: "#376B7E",
+    },
+    // Overrides the chat button styles
+    chatButton: {
+      backgroundColor: "#5ccc9d",
+    },
+  },
+  widgets: [
+    // {
+    //   widgetName: "options",
+    //   widgetFunc: (props) => <Options {...props} />,
+    // },
+    {
+      widgetName: "overview",
+      widgetFunc: (props) => <Overview {...props} />,
+    },
+  ],
 };
 
 export default config;
