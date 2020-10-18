@@ -8,9 +8,7 @@ class MessageParser {
     console.log(message);
     let input = message.toLowerCase();
 
-    if (input.includes("yoo")) {
-      this.actionProvider.greet();
-    }
+    if (input.includes("yoo")) this.actionProvider.greet()
 
     let contactPoints = ["contact", "reach out", "reach you"];
     let phonePoints = ["phone", "cell"];
