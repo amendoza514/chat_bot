@@ -16,13 +16,11 @@ class ActionProvider {
       { withAvatar: true }
     );
     this.addMessageToState(message);
-    //phone
     let phoneNumber = this.createChatBotMessage("cell: (707)-580-2245", {
       withAvatar: false,
       delay: 1000,
     });
     this.addMessageToState(phoneNumber);
-    //email
     let emailPrompt = this.createChatBotMessage("or send an email to: ", 
       { withAvatar: true, delay: 1500 });
     this.addMessageToState(emailPrompt);
