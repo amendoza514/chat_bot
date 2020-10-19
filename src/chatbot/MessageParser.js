@@ -5,7 +5,7 @@ class MessageParser {
   }
 
   parse(message) {
-    console.log(message);
+    console.log(this.state);
     let input = message.toLowerCase();
 
     if (input.includes("yoo")) this.actionProvider.greet()
