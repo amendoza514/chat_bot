@@ -35,10 +35,7 @@ const config = {
       backgroundColor: "#5ccc9d",
     },
   },
-  state: {
-    linkedin: false,
-    github: false,
-  },
+  state: {},
   widgets: [
     {
       widgetName: "overview",

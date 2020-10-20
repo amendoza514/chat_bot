@@ -13,25 +13,26 @@ class MessageParser {
     if (input.includes("help")) this.actionProvider.handleInstructions();
 
     //overview nav start
+
     if (input.includes("resume")) this.actionProvider.handleResume();
     if (input.includes("projects")) this.actionProvider.handleProjects();
     if (input.includes("skills")) this.actionProvider.handleSkills();
-    if (input.includes("publications"))
-      this.actionProvider.handlePublications();
+    if (input.includes("publications")) this.actionProvider.handlePublications();
     if (input.includes("linkedin")) {
       this.actionProvider.handleLinkedin();
-      this.state.linkedin = true;
-      this.state.linkedin = false;
+      // this.state.linkedin = true;
+      // this.state.linkedin = false;
     }
-    if (input.includes("github")) {
-      this.actionProvider.handleGithub();
-      this.state.linkedin = true;
-      this.state.linkedin = false;
-    }
+    if (input.includes("github")) this.actionProvider.handleGithub();
+    
     if (input.includes("go")) {
-      if (this.state.linkedin) this.actionProvider.directLinkedin();
-      if (this.state.github)  this.actionProvider.directGithub();
+      if (this.state.messages[this.state.messages.length - 1].widget === "linkedin") {
+        this.actionProvider.directLinkedin();
+      } else if (this.state.messages[this.state.messages.length - 1].widget === "github") {
+        this.actionProvider.directGithub();
+      }
     }
+
     //overview nav end
 
     let contactPoints = ["contact", "reach out", "reach you"];

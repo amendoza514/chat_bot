@@ -5,14 +5,14 @@ export class Github extends Component {
   render() {
     return (
       <div className="github-container">
-        <div
+        <a
+          href="https://github.com/amendoza514"
+          target="_blank"
+          rel="noreferrer noopener"
           className="github-button"
-          onClick={() => {
-            console.log("github!");
-          }}
         >
-          go to GitHub!
-        </div>
+          Go to my GitHub!
+        </a>
       </div>
     );
   }

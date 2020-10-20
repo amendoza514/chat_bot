@@ -40,11 +40,6 @@ class ActionProvider {
       }
     );
     this.addMessageToState(message);
-    this.setState((prevState) => ({
-      ...prevState,
-      linkedin: true,
-      github: false,
-    }));
   };
 
   directLinkedin = () => {
@@ -56,13 +51,13 @@ class ActionProvider {
   };
 
   handleGithub = () => {
-    let message = this.createChatBotMessage("this is my github");
+    let message = this.createChatBotMessage(
+      "Travel over to GitHub? Press the button below or enter 'go' to open in a new tab",
+      {
+        widget: "github",
+      }
+    );
     this.addMessageToState(message);
-    this.setState((prevState) => ({
-      ...prevState,
-      linkedin: false,
-      github: true,
-    }));
   };
 
   handlePortfolio = () => {
@@ -140,3 +135,19 @@ class ActionProvider {
 }
 
 export default ActionProvider;
+
+// deprecated linkedin example
+  // handleLinkedin = () => {
+  //   let message = this.createChatBotMessage(
+  //     "Travel over to LinkedIn? Press the button below or enter 'go' to open in a new tab",
+  //     {
+  //       widget: "linkedin",
+  //     }
+  //   );
+  //   this.addMessageToState(message);
+  //   this.setState((prevState) => ({
+  //     ...prevState,
+  //     linkedin: true,
+  //     github: false,
+  //   }));
+  // };
