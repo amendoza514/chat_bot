@@ -35,7 +35,9 @@ const config = {
       backgroundColor: "#5ccc9d",
     },
   },
-  state: {},
+  state: {
+    path: null,
+  },
   widgets: [
     {
       widgetName: "overview",
@@ -44,6 +46,7 @@ const config = {
     {
       widgetName: "linkedin",
       widgetFunc: (props) => <Linkedin {...props} />,
+      mapStateToProps: ["path"],
     },
     {
       widgetName: "github",

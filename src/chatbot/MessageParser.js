@@ -21,7 +21,7 @@ class MessageParser {
     if (input.includes("linkedin")) {
       this.actionProvider.handleLinkedin();
       // this.state.linkedin = true;
-      // this.state.linkedin = false;
+      // this.state.github = false;
     }
     if (input.includes("github")) this.actionProvider.handleGithub();
     
@@ -29,6 +29,8 @@ class MessageParser {
       if (this.state.messages[this.state.messages.length - 1].widget === "linkedin") {
         this.actionProvider.directLinkedin();
       } else if (this.state.messages[this.state.messages.length - 1].widget === "github") {
+        this.actionProvider.directGithub();
+      } else if (this.state.messages[this.state.messages.length - 1].widget === "resume") {
         this.actionProvider.directGithub();
       }
     }

@@ -7,14 +7,16 @@ class ActionProvider {
 
   handleResume = () => {
     let message = this.createChatBotMessage(
-      "I'll attach a resume preview below, or click the button below to view on LinkedIn"
+      "I'll attach a resume preview below, or click the button below to view on LinkedIn",
+      {
+        widget: "linkedin",
+      }
     );
+    this.setState((prevState) => ({
+      ...prevState,
+      path: 'resume',
+    }));
     this.addMessageToState(message);
-    let resumeLink = this.createChatBotMessage("go to LinkedIn", {
-      withAvatar: false,
-      delay: 1000,
-    });
-    this.addMessageToState(resumeLink);
   };
 
   handleSkills = () => {
@@ -39,11 +41,19 @@ class ActionProvider {
         widget: "linkedin",
       }
     );
+    this.setState((prevState) => ({
+      ...prevState,
+      path: "linkedin",
+    }));
     this.addMessageToState(message);
   };
 
   directLinkedin = () => {
     window.open("https://www.linkedin.com/in/alex-mendoza-aa4615b5/");
+  };
+
+  directResume = () => {
+    window.open("https://www.linkedin.com/in/alex-mendoza-aa4615b5/detail/overlay-view/urn:li:fsd_profileTreasuryMedia:(ACoAABh5UNwBWqBoK86ES8mS-lQTXWNmQJtTq-M,1602639015861)/");
   };
 
   directGithub = () => {
