@@ -1,11 +1,11 @@
 .linkedin-container {
-    /* background-color: blueviolet; */
     text-align: -webkit-center;
+    padding: 8px;
 }
 
 .linkedin-button {
     border-radius: 25px;
-    padding: 8px;
+    padding: 10px;
     background-color: #5CCC9D;
     border: 1px solid #5CCC9D;
     color: white;

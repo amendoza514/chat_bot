@@ -13,14 +13,14 @@ const config = {
       `Enter 'Porfolio' and I can help you navigate around this site and see what Alex has been up to, or enter 'Options' to see some ways I can help answer some of your questions!`,
       {
         withAvatar: true,
-        delay: 500,
+        delay: 1500,
       }
     ),
     createChatBotMessage(
       `...or enter 'help' at anytime to bring up these options again! `,
       {
         withAvatar: true,
-        delay: 800,
+        delay: 2000,
       }
     ),
   ],
@@ -34,6 +34,10 @@ const config = {
     chatButton: {
       backgroundColor: "#5ccc9d",
     },
+  },
+  state: {
+    linkedin: false,
+    github: false,
   },
   widgets: [
     {

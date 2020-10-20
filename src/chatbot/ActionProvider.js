@@ -6,7 +6,9 @@ class ActionProvider {
   }
 
   handleResume = () => {
-    let message = this.createChatBotMessage("I'll attach a resume preview below, or click the button below to view on LinkedIn");
+    let message = this.createChatBotMessage(
+      "I'll attach a resume preview below, or click the button below to view on LinkedIn"
+    );
     this.addMessageToState(message);
     let resumeLink = this.createChatBotMessage("go to LinkedIn", {
       withAvatar: false,
@@ -31,15 +33,36 @@ class ActionProvider {
   };
 
   handleLinkedin = () => {
-    let message = this.createChatBotMessage("Travel over to LinkedIn? Press the button below or enter 'go' to open up a new tab", {
-      widget: "linkedin",
-    });
+    let message = this.createChatBotMessage(
+      "Travel over to LinkedIn? Press the button below or enter 'go' to open in a new tab",
+      {
+        widget: "linkedin",
+      }
+    );
     this.addMessageToState(message);
+    this.setState((prevState) => ({
+      ...prevState,
+      linkedin: true,
+      github: false,
+    }));
+  };
+
+  directLinkedin = () => {
+    window.open("https://www.linkedin.com/in/alex-mendoza-aa4615b5/");
+  };
+
+  directGithub = () => {
+    window.open("https://github.com/amendoza514");
   };
 
   handleGithub = () => {
     let message = this.createChatBotMessage("this is my github");
     this.addMessageToState(message);
+    this.setState((prevState) => ({
+      ...prevState,
+      linkedin: false,
+      github: true,
+    }));
   };
 
   handlePortfolio = () => {
