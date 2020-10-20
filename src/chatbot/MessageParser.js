@@ -8,7 +8,7 @@ class MessageParser {
     console.log(this.state);
     let input = message.toLowerCase();
 
-    if (input.includes("yoo")) this.actionProvider.greet()
+    if (input.includes("help")) this.actionProvider.handleInstructions()
 
     let contactPoints = ["contact", "reach out", "reach you"];
     let phonePoints = ["phone", "cell"];
@@ -24,6 +24,10 @@ class MessageParser {
 
     if (emailPoints.some((e) => input.includes(e))) {
        this.actionProvider.addEmail();
+    }
+
+    if (input.includes("portfolio")) {
+      this.actionProvider.handlePortfolio();
     }
    
     //Need a default condition

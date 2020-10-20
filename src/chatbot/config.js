@@ -7,13 +7,23 @@ const config = {
   botName: "AlexBot",
   initialMessages: [
     createChatBotMessage(`Hello! Welcome to this demo chat bot program`),
-    createChatBotMessage(`What would you like to see?`, {
-      widget: "overview",
-      withAvatar: true,
-    }),
+    createChatBotMessage(
+      `Enter 'Porfolio' and I can help you navigate around this site and see what Alex has been up to, or enter 'Options' to see some ways I can help answer some of your questions!`,
+      {
+        withAvatar: true,
+        delay: 500,
+      }
+    ),
+    createChatBotMessage(
+      `...or enter 'help' at anytime to bring up these options again! `,
+      {
+        withAvatar: true,
+        delay: 800,
+      }
+    ),
   ],
   customComponents: {
-    botAvatar: (props) => < BotAvatar {...props} />,
+    botAvatar: (props) => <BotAvatar {...props} />,
   },
   customStyles: {
     botMessageBox: {
