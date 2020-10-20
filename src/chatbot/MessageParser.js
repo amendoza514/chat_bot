@@ -18,20 +18,16 @@ class MessageParser {
     if (input.includes("projects")) this.actionProvider.handleProjects();
     if (input.includes("skills")) this.actionProvider.handleSkills();
     if (input.includes("publications")) this.actionProvider.handlePublications();
-    if (input.includes("linkedin")) {
-      this.actionProvider.handleLinkedin();
-      // this.state.linkedin = true;
-      // this.state.github = false;
-    }
+    if (input.includes("linkedin")) this.actionProvider.handleLinkedin()
     if (input.includes("github")) this.actionProvider.handleGithub();
     
     if (input.includes("go")) {
-      if (this.state.messages[this.state.messages.length - 1].widget === "linkedin") {
+      if (this.state.path === "linkedin") {
         this.actionProvider.directLinkedin();
-      } else if (this.state.messages[this.state.messages.length - 1].widget === "github") {
+      } else if (this.state.path=== "github") {
         this.actionProvider.directGithub();
-      } else if (this.state.messages[this.state.messages.length - 1].widget === "resume") {
-        this.actionProvider.directGithub();
+      } else if (this.state.path === "resume") {
+        this.actionProvider.directResume();
       }
     }
 

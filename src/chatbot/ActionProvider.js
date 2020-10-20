@@ -67,6 +67,10 @@ class ActionProvider {
         widget: "github",
       }
     );
+    this.setState((prevState) => ({
+      ...prevState,
+      path: "github",
+    }));
     this.addMessageToState(message);
   };
 
