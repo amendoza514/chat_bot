@@ -6,17 +6,17 @@ class ActionProvider {
   }
 
   handleResume = () => {
-    let message = this.createChatBotMessage("this is my resume");
+    let message = this.createChatBotMessage("I'll attach a resume preview below, or click the button below to view on LinkedIn");
     this.addMessageToState(message);
+    let resumeLink = this.createChatBotMessage("go to LinkedIn", {
+      withAvatar: false,
+      delay: 1000,
+    });
+    this.addMessageToState(resumeLink);
   };
 
   handleSkills = () => {
     let message = this.createChatBotMessage("this is my skillz");
-    this.addMessageToState(message);
-  };
-
-  handleResume = () => {
-    let message = this.createChatBotMessage("this is my resume");
     this.addMessageToState(message);
   };
 
@@ -31,7 +31,9 @@ class ActionProvider {
   };
 
   handleLinkedin = () => {
-    let message = this.createChatBotMessage("this is my linkedin");
+    let message = this.createChatBotMessage("Travel over to LinkedIn? Press the button below or enter 'go' to open up a new tab", {
+      widget: "linkedin",
+    });
     this.addMessageToState(message);
   };
 

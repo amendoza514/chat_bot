@@ -1,6 +1,8 @@
 import React from 'react';
 import { createChatBotMessage } from "react-chatbot-kit";
 import Overview from '../components/overview/Overview'
+import Linkedin from "../components/linkedin/linkedin";
+import Github from "../components/github/github";
 import BotAvatar from "../components/botAvatar/BotAvatar";
 
 const config = {
@@ -34,13 +36,17 @@ const config = {
     },
   },
   widgets: [
-    // {
-    //   widgetName: "options",
-    //   widgetFunc: (props) => <Options {...props} />,
-    // },
     {
       widgetName: "overview",
       widgetFunc: (props) => <Overview {...props} />,
+    },
+    {
+      widgetName: "linkedin",
+      widgetFunc: (props) => <Linkedin {...props} />,
+    },
+    {
+      widgetName: "github",
+      widgetFunc: (props) => <Github {...props} />,
     },
   ],
 };
