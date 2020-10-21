@@ -3,6 +3,8 @@ import { createChatBotMessage } from "react-chatbot-kit";
 import Overview from '../components/overview/Overview'
 import Linkedin from "../components/linkedin/linkedin";
 import Github from "../components/github/github";
+import Projects from '../components/projects/projects';
+import Project from  '../components/projects/project'
 import BotAvatar from "../components/botAvatar/BotAvatar";
 
 const config = {
@@ -20,14 +22,14 @@ const config = {
       `Enter 'Options' to see some ways I can help answer questions about Alex or me!`,
       {
         withAvatar: true,
-        delay: 2000,
+        delay: 3000,
       }
     ),
     createChatBotMessage(
       `...or enter 'help' at anytime to bring up these options again, and 'clear' to clean up the chat!`,
       {
         withAvatar: true,
-        delay: 3000,
+        delay: 5000,
       }
     ),
   ],
@@ -49,6 +51,15 @@ const config = {
     {
       widgetName: "overview",
       widgetFunc: (props) => <Overview {...props} />,
+    },
+    {
+      widgetName: "projects",
+      widgetFunc: (props) => <Projects {...props} />,
+    },
+    {
+      widgetName: "project",
+      widgetFunc: (props) => <Project {...props} />,
+      mapStateToProps: ["path"]
     },
     {
       widgetName: "linkedin",

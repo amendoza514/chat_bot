@@ -20,7 +20,6 @@ class MessageParser {
       return;
     }
 
-    //overview nav start
     if (input.includes("resume")) {
       this.actionProvider.handleResume();
       return;
@@ -45,6 +44,25 @@ class MessageParser {
       return;
     }
 
+    if (input.includes("tutube")) {
+       this.actionProvider.handleTuTube();
+       return;
+    }
+
+    if (
+      input.includes("bubbleball") ||
+      input.includes("bubble ball") ||
+      input.includes("bubble")
+    ) {
+      this.actionProvider.handleBubbleBall();
+      return;
+    }
+
+    if (input.includes("roulette") || input.includes("rr")) {
+      this.actionProvider.handleRestaurantRoulette();
+      return;
+    }
+
     if (input.includes("github")) {
       this.actionProvider.handleGithub();
       return;
@@ -63,12 +81,20 @@ class MessageParser {
       } else if (this.state.path === "publications") {
         this.actionProvider.directPublications();
         return;
+      } else if (this.state.path === "tutube") {
+        this.actionProvider.directTuTube();
+        return;
+      } else if (this.state.path === "bubbleball") {
+        this.actionProvider.directBubbleBall();
+        return;
+      } else if (this.state.path === "restaurantroulette") {
+        this.actionProvider.directRestaurantRoulette();
+        return;
       } else {
         this.actionProvider.directDefault();
         return;
       }
     }
-    //overview nav end
 
     let contactPoints = ["contact", "reach out", "reach you"];
     let phonePoints = ["phone", "cell"];
