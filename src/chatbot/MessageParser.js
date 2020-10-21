@@ -11,6 +11,7 @@ class MessageParser {
     //debug only
 
     if (input.includes("help")) this.actionProvider.handleInstructions();
+    if (input.includes("clear")) this.actionProvider.handleClearScreen();
 
     //overview nav start
 
@@ -53,7 +54,6 @@ class MessageParser {
       this.actionProvider.handlePortfolio();
     }
 
-    //Need a default condition
   }
 }
 

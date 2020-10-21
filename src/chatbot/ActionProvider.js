@@ -4,6 +4,18 @@ class ActionProvider {
     this.setState = setStateFunc;
     this.createClientMessage = createClientMessage;
   }
+  handleClearScreen = () => {
+    let message = this.createChatBotMessage("You got it! Let me clean up the chat");
+    this.addMessageToState(message);
+
+    setTimeout(() => {
+      this.setState((prevState) => ({
+        ...prevState,
+        messages: [],
+      }));
+    }, 2000);
+  }
+  
 
   handleResume = () => {
     let message = this.createChatBotMessage(
@@ -29,9 +41,33 @@ class ActionProvider {
     this.addMessageToState(message);
   };
 
+  // handleDemo = () => {
+  //   let message = this.createChatBotMessage("No problem!");
+  //   this.addMessageToState(message);
+  //   let message2 = this.createChatBotMessage("Need help? Enter 'help'!");
+  //   this.addMessageToState(message2);
+  // }
+
   handlePublications = () => {
-    let message = this.createChatBotMessage("this is my pubvs");
+    let message = this.createChatBotMessage(
+       "As part of my psychology and legal studies dual major at Claremont McKenna College, I wrote a thesis on the legal implications of 3D printing technology that discussed maufacturing and intellectual property concerns that comes with the technology to create anything at home"
+     );
+    let message2 = this.createChatBotMessage(
+      "As of today, it has several thousand downloads in over 100 countries around the world!",
+      { delay: 1000, withAvatar: true }
+    );
+    let message3 = this.createChatBotMessage("Enter 'go' to check it out or press the button below", {
+      widget: 'linkedin',
+      withAvatar: true,
+      delay: 2000
+    });
+     this.setState((prevState) => ({
+       ...prevState,
+       path: "publications",
+     }));
     this.addMessageToState(message);
+    this.addMessageToState(message2);
+    this.addMessageToState(message3);
   };
 
   handleLinkedin = () => {
@@ -85,10 +121,15 @@ class ActionProvider {
   };
 
   handleInstructions = () => {
-    let message = this.createChatBotMessage(
-      `Enter 'Porfolio' and I can help you navigate around this site and see what Alex has been up to, or enter 'Options' to see some ways I can help answer some of your questions!`
+    let message1 = this.createChatBotMessage(
+      `Enter 'Porfolio' and I can help you navigate around this site (will be my portfolio) and see what Alex has been up to`
     );
-    this.addMessageToState(message);
+    let message2 = this.createChatBotMessage(
+      `or enter 'Options' to see some ways I can help answer some of your questions!`
+    );
+    
+    this.addMessageToState(message1);
+    this.addMessageToState(message2);
   };
 
   contactPlug = () => {

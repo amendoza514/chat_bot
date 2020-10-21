@@ -10,17 +10,24 @@ const config = {
   initialMessages: [
     createChatBotMessage(`Hello! Welcome to this demo chat bot program`),
     createChatBotMessage(
-      `Enter 'Porfolio' and I can help you navigate around this site and see what Alex has been up to, or enter 'Options' to see some ways I can help answer some of your questions!`,
-      {
-        withAvatar: true,
-        delay: 1500,
-      }
-    ),
-    createChatBotMessage(
-      `...or enter 'help' at anytime to bring up these options again! `,
+      `Enter 'Porfolio' and I can help you navigate around this site (will be my portfolio) and see what Alex has been up to`,
       {
         withAvatar: true,
         delay: 2000,
+      }
+    ),
+    createChatBotMessage(
+      `Enter 'Options' to see some ways I can help answer questions about Alex or me!`,
+      {
+        withAvatar: true,
+        delay: 2000,
+      }
+    ),
+    createChatBotMessage(
+      `...or enter 'help' at anytime to bring up these options again, and 'clear' to clean up the chat!`,
+      {
+        withAvatar: true,
+        delay: 3000,
       }
     ),
   ],
