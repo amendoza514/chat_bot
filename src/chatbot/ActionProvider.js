@@ -6,6 +6,7 @@ class ActionProvider {
   }
   handleClearScreen = () => {
     let message = this.createChatBotMessage("You got it! Let me clean up the chat");
+    let message2 = this.createChatBotMessage("remember, you can ask for 'help' if you ever need it!");
     this.addMessageToState(message);
 
     setTimeout(() => {
@@ -13,6 +14,10 @@ class ActionProvider {
         ...prevState,
         messages: [],
       }));
+    }, 2000);
+
+    setTimeout(() => {
+      this.addMessageToState(message2)
     }, 2000);
   }
   
