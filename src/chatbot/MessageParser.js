@@ -35,7 +35,7 @@ class MessageParser {
       return;
     }
 
-    if (input.includes("publications")) {
+    if (input.includes("publication")) {
       this.actionProvider.handlePublications();
       return;
     }
@@ -59,6 +59,9 @@ class MessageParser {
         return;
       } else if (this.state.path === "resume") {
         this.actionProvider.directResume();
+        return;
+      } else if (this.state.path === "publications") {
+        this.actionProvider.directPublications();
         return;
       } else {
         this.actionProvider.directDefault();

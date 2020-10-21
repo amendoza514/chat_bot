@@ -6,7 +6,7 @@ class ActionProvider {
   }
   handleClearScreen = () => {
     let message = this.createChatBotMessage("You got it! Let me clean up the chat");
-    let message2 = this.createChatBotMessage("remember, you can ask for 'help' if you ever need it!");
+    let message2 = this.createChatBotMessage("Remember, you can ask for 'help' if you ever need it!");
     this.addMessageToState(message);
 
     setTimeout(() => {
@@ -56,16 +56,16 @@ class ActionProvider {
 
   handlePublications = () => {
     let message = this.createChatBotMessage(
-       "As part of my psychology and legal studies dual major at Claremont McKenna College, I wrote a thesis on the legal implications of 3D printing technology that discussed maufacturing and intellectual property concerns that comes with the technology to create anything at home"
+       "As part of Alex's psychology and legal studies dual major at Claremont McKenna College, he wrote a thesis on the legal implications of 3D printing technology and it's MASSIVE impact on IP law"
      );
     let message2 = this.createChatBotMessage(
       "As of today, it has several thousand downloads in over 100 countries around the world!",
-      { delay: 1000, withAvatar: true }
+      { delay: 2000, withAvatar: true }
     );
     let message3 = this.createChatBotMessage("Enter 'go' to check it out or press the button below", {
       widget: 'linkedin',
       withAvatar: true,
-      delay: 2000
+      delay: 3000
     });
      this.setState((prevState) => ({
        ...prevState,
@@ -108,6 +108,10 @@ class ActionProvider {
 
   directGithub = () => {
     window.open("https://github.com/amendoza514");
+  };
+
+  directPublications = () => {
+    window.open("https://scholarship.claremont.edu/cmc_theses/1032/");
   };
 
   handleGithub = () => {
@@ -205,7 +209,7 @@ class ActionProvider {
       0: "Hmmm, not sure how to respond, Try asking again differently, or asking 'help' to see how we can get started",
       1: "Not sure how to help. Try asking again or asking 'help' to see more options",
       2: "Didn't catch that, maybe try again? Or ask 'help' for options",
-      3: "Not sure how to interpret that, try asking again! Or ask help for options",
+      3: "Not sure how to interpret that, try asking again! Or ask 'help' for options",
       4: "That went over my head, try again? Or try asking 'help' to see how we can get started",
     };
     let error = Math.floor(Math.random() * Math.floor(5));
