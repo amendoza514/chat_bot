@@ -34,6 +34,7 @@ class ActionProvider {
       path: 'resume',
     }));
     this.addMessageToState(message);
+    return true
   };
 
   handleSkills = () => {
@@ -97,6 +98,14 @@ class ActionProvider {
     window.open("https://www.linkedin.com/in/alex-mendoza-aa4615b5/detail/overlay-view/urn:li:fsd_profileTreasuryMedia:(ACoAABh5UNwBWqBoK86ES8mS-lQTXWNmQJtTq-M,1602639015861)/");
   };
 
+  directDefault = () => {
+    let message = this.createChatBotMessage(
+      `go where? If you want to visit somewhere like Alex's LinkedIn, try asking about LinkedIn in general`
+    );
+
+    this.addMessageToState(message);
+  }
+
   directGithub = () => {
     window.open("https://github.com/amendoza514");
   };
@@ -127,10 +136,15 @@ class ActionProvider {
 
   handleInstructions = () => {
     let message1 = this.createChatBotMessage(
-      `Enter 'Porfolio' and I can help you navigate around this site (will be my portfolio) and see what Alex has been up to`
+      `Enter 'Porfolio' and I can help you navigate around this site (will be my portfolio) and see what Alex has been up to`, {
+        withAvatar: true
+      }
     );
     let message2 = this.createChatBotMessage(
-      `or enter 'Options' to see some ways I can help answer some of your questions!`
+      `or enter 'Options' to see some ways I can help answer some of your questions!`,
+      {
+        withAvatar: true,
+      }
     );
     
     this.addMessageToState(message1);
@@ -184,6 +198,19 @@ class ActionProvider {
       delay: 1000,
     });
     this.addMessageToState(phoneNumber);
+  }
+
+  handleError() {
+    let errorBank = {
+      0: "Hmmm, not sure how to respond, Try asking again differently, or asking 'help' to see how we can get started",
+      1: "Not sure how to help. Try asking again or asking 'help' to see more options",
+      2: "Didn't catch that, maybe try again? Or ask 'help' for options",
+      3: "Not sure how to interpret that, try asking again! Or ask help for options",
+      4: "That went over my head, try again? Or try asking 'help' to see how we can get started",
+    };
+    let error = Math.floor(Math.random() * Math.floor(5));
+    let message = this.createChatBotMessage(errorBank[error])
+    this.addMessageToState(message);
   }
 
   addMessageToState = (message) => {
