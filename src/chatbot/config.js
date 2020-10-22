@@ -6,6 +6,7 @@ import Github from "../components/github/github";
 import Projects from '../components/projects/projects';
 import Project from  '../components/projects/project'
 import BotAvatar from "../components/botAvatar/BotAvatar";
+import Skills from '../components/skills/skills'
 
 const config = {
   botName: "AlexBot",
@@ -45,7 +46,8 @@ const config = {
     },
   },
   state: {
-    path: null, directLink: false
+    path: null,
+    directLink: false,
   },
   widgets: [
     {
@@ -59,7 +61,11 @@ const config = {
     {
       widgetName: "project",
       widgetFunc: (props) => <Project {...props} />,
-      mapStateToProps: ["path"]
+      mapStateToProps: ["path"],
+    },
+    {
+      widgetName: "skills",
+      widgetFunc: (props) => <Skills {...props} />,
     },
     {
       widgetName: "linkedin",

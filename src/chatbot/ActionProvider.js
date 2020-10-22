@@ -54,8 +54,17 @@ class ActionProvider {
   // }
 
   handleSkills = () => {
-    let message = this.createChatBotMessage("this is my skillz");
+    let message = this.createChatBotMessage("Let's dive into it!", {
+      withAvatar: true,
+    });
+    let path = this.createChatBotMessage("Where should we start? Select any of these options below, or enter the name in chat", {
+        withAvatar: true,
+        widget: 'skills',
+        path: "skills",
+        delay: 1000,
+    });
     this.addMessageToState(message);
+    this.addMessageToState(path);
   };
 
   handleProjects = () => {
