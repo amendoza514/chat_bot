@@ -39,7 +39,7 @@ class MessageParser {
       return;
     }
 
-    if (input.includes("ruby")) {
+    if (input === "ruby") {
       this.actionProvider.handleRuby();
       return;
     }
@@ -61,6 +61,31 @@ class MessageParser {
 
     if (input.includes("skills")) {
       this.actionProvider.handleSkills();
+      return;
+    }
+
+    if (input.includes("frameworks")) {
+      this.actionProvider.handleFrameworks();
+      return;
+    }
+
+    if (input.includes("rails")) {
+      this.actionProvider.handleRails();
+      return;
+    }
+
+    if (input.includes("react")) {
+      this.actionProvider.handleReact();
+      return;
+    }
+
+    if (input.includes("redux")) {
+      this.actionProvider.handleRedux();
+      return;
+    }
+
+    if (input.includes("mern")) {
+      this.actionProvider.handleMern();
       return;
     }
 

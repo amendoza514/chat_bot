@@ -88,7 +88,7 @@ class ActionProvider {
       }
     );
     let message3 = this.createChatBotMessage(
-      "Would you like to see some of the projects leveraging the above skills? Try entering the any of the above options to check!",
+      "Would you like to see some of the projects leveraging the above langauges? Try entering the any of the above options to check!",
       {
         withAvatar: true,
         delay: 2500,
@@ -98,6 +98,37 @@ class ActionProvider {
     this.addMessageToState(message2);
     this.addMessageToState(message3);
   };
+
+  handleFrameworks = () => {
+    // this.setState((prevState) => ({
+    //   ...prevState,
+    //   path: "languages",
+    // }));
+    let message = this.createChatBotMessage(
+      "Here are some frameworks Alex has developed in",
+      {
+        withAvatar: true,
+      }
+    );
+    let message2 = this.createChatBotMessage(
+      "Frameworks: Ruby on Rails, React, React & Redux, MERN (not really a framework, but fits here!)",
+      {
+        withAvatar: false,
+        delay: 1500,
+      }
+    );
+    let message3 = this.createChatBotMessage(
+      "Would you like to see some of the projects leveraging the above frameworks? Try entering the any of the above options to check!",
+      {
+        withAvatar: true,
+        delay: 3500,
+      }
+    );
+    this.addMessageToState(message);
+    this.addMessageToState(message2);
+    this.addMessageToState(message3);
+  };
+
   handleJavascript = () => {
     this.setState((prevState) => ({
       ...prevState,
@@ -179,6 +210,64 @@ class ActionProvider {
       }
     );
     this.addMessageToState(message);
+  };
+
+  handleRails = () => {
+    let message = this.createChatBotMessage(
+      "Rails it is! Alex's go-to for back end configuration. Projects include:",
+      {
+        withAvatar: true,
+        delay: 1000,
+      }
+    );
+    this.addMessageToState(message);
+    let message2 = this.createChatBotMessage("TuTube", {
+      withAvatar: false,
+      delay: 2000,
+    });
+    this.addMessageToState(message2);
+    let message3 = this.createChatBotMessage(
+      "Enter any of the projects above to learn more!",
+      {
+        withAvatar: true,
+        delay: 4000,
+      }
+    );
+    this.addMessageToState(message3);
+  };
+
+  handleReact = () => {
+    let message = this.createChatBotMessage(
+      "React! I'll list Alex's React work below:",
+      {
+        withAvatar: true,
+        delay: 1000,
+      }
+    );
+    this.addMessageToState(message);
+    let message2 = this.createChatBotMessage("TuTube", {
+      withAvatar: false,
+      delay: 2000,
+    });
+    this.addMessageToState(message2);
+    let message3 = this.createChatBotMessage("Restaurant Roulette", {
+      withAvatar: false,
+      delay: 3000,
+    });
+    this.addMessageToState(message3);
+    let message4 = this.createChatBotMessage("This portfolio and chatbot!", {
+      withAvatar: false,
+      delay: 4000,
+    });
+    this.addMessageToState(message4);
+    let message5 = this.createChatBotMessage(
+      "Enter any of the projects above to learn more! Except the chatbot/portfolio piece, you're here already!",
+      {
+        withAvatar: true,
+        delay: 6000,
+      }
+    );
+    this.addMessageToState(message5);
   };
 
   handleProjects = () => {
