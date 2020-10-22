@@ -200,28 +200,28 @@ class ActionProvider {
       "Music: Alex played Saxophone through highschool, but then quickly picked up guitar because his sax was stolen and they are not cheap to replace",
       {
         withAvatar: false,
-        delay: 1500,
+        delay: 2500,
       }
     );
     let sports = this.createChatBotMessage(
       "Sports: Alex started swimming at age 6, and swam competeively through college at Claremont McKenna College. A distance freestyle specialist, Alex excelled at staving off not passing out. Alex still holds the 1000 free CMC pool record, and is not bitter about having his 1650 freestyle school record beaten recently at all",
       {
         withAvatar: false,
-        delay: 3500,
+        delay: 4500,
       }
     );
     let powerlifting = this.createChatBotMessage(
       "Powerlifting: As a direct response to ridiculous cardio training his whole life, Alex now spends his time training to excert energy for the shortest amount of time possible. His squat numbers are very laughable currently.",
       {
         withAvatar: false,
-        delay: 6500,
+        delay: 7500,
       }
     );
     let basketball = this.createChatBotMessage(
       "NBA: Alex thinks about the NBA too much, evident in several projects themed around the sport. Alex considers himself LeBron's number 1 fan, which has been difficult as he lives in Warriors territory. He loves discussing the GOAT conversation",
       {
         withAvatar: false,
-        delay: 9500,
+        delay: 10500,
       }
     );
     

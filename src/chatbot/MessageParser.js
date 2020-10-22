@@ -29,7 +29,7 @@ class MessageParser {
       return;
     }
 
-    if (input.includes("languages")) {
+    if (input.includes("language")) {
       this.actionProvider.handleLanguages();
       return;
     }
