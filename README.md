@@ -13,9 +13,10 @@ Users can navigate to larger directories like 'Portfolio' or 'Options' that will
 Additionally, Alex's projects and work experience are linked to language and framework components under the larger 'skills and technology' umbrella found in the 'portfolio' section, meaning users can explore various technologies and then explore projects that leveraged them during development. Users can then 'go' straight to projects opened up in a new tab to avoid interuppting the chat history, as well as have direct links to LinkedIn, resume details, and GitHub.
 
 
-### Basic App Structure 
+## Basic App Structure 
 React-chatbot-kit sets up a very general class component hierarchy that allows users to build custom message parsing from scratch, as well as building custom components called 'widgets' that allow selected elements within state to travel to accompanying React elements. 
 
+### Config 
 The initial journey begins at the config.js file passed into the <Chabot /> component in the main App.js directory. Custom widgets are created here, as well as initial messages dsiplayed to users, custom css formatting, and state variables to be used later. Custom components flow through this config layer.
 
 Below is a mock config.js file created from elements in production.
@@ -66,7 +67,7 @@ const config = {
       mapStateToProps: ["path"],
     },
 ``` 
-
+### MessageParser
 Once a user inputs a message, the 'messageParser' kicks in and directs the message to the appropriate path using the 'parse' method.
 
 ```sh
@@ -124,7 +125,7 @@ class MessageParser {
 export default MessageParser;
 
 ``` 
-
+### ActionProvider
 After parsed in the messageParser, the actionProvider class takes over to define message content and send to the appropriate widget if necessary. The actionProvider also became a state / props staging area to help define paths in the background so that users could simply enter 'go' during certain portions of the chatbot experience and be sent to correct external resources depending on context.
 
 ```sh
@@ -188,7 +189,7 @@ class ActionProvider {
 export default ActionProvider;
 
 ``` 
-
+### Custom Components / Widgets
 Finally, appropriate messages are packaged with 'widget' props that can link other components defined by user to display additional content and potentially different actionProvider paths as well.
 
 Below is an example of the LinkedIn widget created to handle various link regarding resume, projects and overall profile resources.
