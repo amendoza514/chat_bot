@@ -96,6 +96,19 @@ class MessageParser {
       }
     }
 
+    if (input.includes("tech")) {
+      if (this.state.path === "tutube") {
+        this.actionProvider.techTuTube();
+        return;
+      } else if (this.state.path === "bubbleball") {
+        this.actionProvider.techBubbleBall();
+        return;
+      } else if (this.state.path === "restaurantroulette") {
+        this.actionProvider.techRestaurantRoulette();
+        return;
+      }
+    }
+
     let contactPoints = ["contact", "reach out", "reach you"];
     let phonePoints = ["phone", "cell"];
     let emailPoints = ["email"];

@@ -54,7 +54,7 @@ class ActionProvider {
     let message2 = this.createChatBotMessage(
       "Which would you like to learn more about? Select any options above or enter the name in the chat",
       {
-        delay: 2000,
+        delay: 1000,
         withAvatar: true,
       }
     );
@@ -64,7 +64,7 @@ class ActionProvider {
 
   handleTuTube = () => {
     let message = this.createChatBotMessage(
-      "Sure! TuTube is a pixel perfect clone of YouTube Alex created completely from scratch using Ruby on Rails for the back end, and React/Redux on the front end.",
+      "Sure! TuTube is a pixel perfect clone of YouTube Alex created completely from scratch using Ruby on Rails and React/Redux",
       {
         delay: 1000,
         withAvatar: true,
@@ -72,7 +72,7 @@ class ActionProvider {
     );
     this.addMessageToState(message);
     let message2 = this.createChatBotMessage(
-      "Some other technologies used in TuTube include Heroku and S3 for hosting, active record and postgreSQL for data management, and tools like Webpack and JQuery/JBuilder to assist in bridging back end to front end",
+      "Some other technologies used in TuTube include Heroku and S3, postgreSQL, webpack and live server",
       {
         delay: 3000,
         withAvatar: true,
@@ -88,7 +88,7 @@ class ActionProvider {
     );
     this.addMessageToState(message3);
     let message4 = this.createChatBotMessage(
-      "Hit the button below to check out the live site! Or enter 'go' to open up a new tab all the same",
+      "Hit the button below to check out the live site! Or enter 'go' to open up a new tab all the same. OR enter 'tech' to get the full list of technologies used",
       {
         delay: 6000,
         withAvatar: true,
@@ -136,7 +136,7 @@ class ActionProvider {
     );
     this.addMessageToState(message4);
     let message5 = this.createChatBotMessage(
-      "Hit the button below to play the game! Or enter 'go'",
+      "Hit the button below enter 'go' to play! Or enter 'tech' to get the full list of technologies used",
       {
         delay: 8000,
         withAvatar: true,
@@ -202,6 +202,29 @@ class ActionProvider {
 
   directTuTube = () => {
     window.open("https://tutube-fsp.herokuapp.com/#/");
+  };
+
+  techTuTube = () => {
+    let intro = this.createChatBotMessage(
+      "Let's take a look!",
+      { withAvatar: true, delay: 500 }
+    );
+    this.addMessageToState(intro);
+    let hosting = this.createChatBotMessage(
+      "Hosting: Heroku (live site), AWS S3 (picture and video storage)", 
+      { withAvatar: false, delay: 2000 }
+    );
+    this.addMessageToState(hosting);
+    let frontend = this.createChatBotMessage(
+      "Frontend: JavaScript & ES6, React & Redux, CSS / SCSS, JQuery, JBuilder",
+      { withAvatar: false, delay: 3000 }
+    );
+    this.addMessageToState(frontend);
+    let backend = this.createChatBotMessage(
+      "Backend: Ruby on Rails, PostgreSQL, Active Record",
+      { withAvatar: false, delay: 4000 }
+    );
+    this.addMessageToState(backend);
   };
 
   directBubbleBall = () => {
