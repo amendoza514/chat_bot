@@ -69,6 +69,25 @@ class MessageParser {
       return;
     }
 
+    if (input.includes("other tech")) {
+      this.actionProvider.handleOtherTechnology();
+      return;
+    }
+
+    if (input.includes("all") && input.includes("above")) {
+      this.actionProvider.handleEverything();
+      return;
+    };
+
+    if (
+      input.includes("hobbies") ||
+      input.includes("hobby") ||
+      input.includes("non-technical")
+    ) {
+      this.actionProvider.handleNonTechnical();
+      return;
+    };
+
     if (input.includes("rails")) {
       this.actionProvider.handleRails();
       return;

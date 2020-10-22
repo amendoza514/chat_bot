@@ -129,6 +129,110 @@ class ActionProvider {
     this.addMessageToState(message3);
   };
 
+  handleOtherTechnology = () => {
+    // this.setState((prevState) => ({
+    //   ...prevState,
+    //   path: "languages",
+    // }));
+    let message = this.createChatBotMessage(
+      "I'll run through some other technologies and protocols Alex has experience with. Buckle up!",
+      {
+        withAvatar: true,
+      }
+    );
+    let message2 = this.createChatBotMessage(
+      "Other Technology: JQuery, AJAX, HTML 5, Canvas, JBuilder, Git, Rspec, Express.js, Axios, SQLite3, Looker, DNS, Node.js, Mongoose, Heroku, AWS S3, CSS/SCSS, JSON",
+      {
+        withAvatar: false,
+        delay: 1500,
+      }
+    );
+
+    this.addMessageToState(message);
+    this.addMessageToState(message2);
+  };
+
+  handleEverything = () => {
+    let intro = this.createChatBotMessage(
+      "You asked for it! Here is the full list. Try asking for a specific 'langauge' or 'framework' to see which projects use which",
+      {
+        withAvatar: true,
+      }
+    );
+    let languages = this.createChatBotMessage(
+      "Languages: JavaScript, Ruby, Python, PostgreSQL, NoSQL (MongoDB)",
+      {
+        withAvatar: false,
+        delay: 1500,
+      }
+    );
+    let frameworks = this.createChatBotMessage(
+      "Frameworks: Ruby on Rails, React, React & Redux, MERN (not really a framework, but fits here!)",
+      {
+        withAvatar: false,
+        delay: 3500,
+      }
+    );
+
+    let other = this.createChatBotMessage(
+      "Other Technology: JQuery, AJAX, HTML 5, Canvas, JBuilder, Git, Rspec, Express.js, Axios, SQLite3, Looker, DNS, Node.js, Mongoose, Heroku, AWS S3, CSS/SCSS, JSON",
+      {
+        withAvatar: false,
+        delay: 5000,
+      }
+    );
+
+    this.addMessageToState(intro);
+    this.addMessageToState(languages);
+    this.addMessageToState(frameworks);
+    this.addMessageToState(other);
+  };
+
+  handleNonTechnical = () => {
+    let intro = this.createChatBotMessage(
+      "When Alex is not on Stack Overflow, he is also well versed in the following:",
+      {
+        delay: 1000,
+        withAvatar: true,
+      }
+    );
+    let music = this.createChatBotMessage(
+      "Music: Alex played Saxophone through highschool, but then quickly picked up guitar because his sax was stolen and they are not cheap to replace",
+      {
+        withAvatar: false,
+        delay: 1500,
+      }
+    );
+    let sports = this.createChatBotMessage(
+      "Sports: Alex started swimming at age 6, and swam competeively through college at Claremont McKenna College. A distance freestyle specialist, Alex excelled at staving off not passing out. Alex still holds the 1000 free CMC pool record, and is not bitter about having his 1650 freestyle school record beaten recently at all",
+      {
+        withAvatar: false,
+        delay: 3500,
+      }
+    );
+    let powerlifting = this.createChatBotMessage(
+      "Powerlifting: As a direct response to ridiculous cardio training his whole life, Alex now spends his time training to excert energy for the shortest amount of time possible. His squat numbers are very laughable currently.",
+      {
+        withAvatar: false,
+        delay: 6500,
+      }
+    );
+    let basketball = this.createChatBotMessage(
+      "NBA: Alex thinks about the NBA too much, evident in several projects themed around the sport. Alex considers himself LeBron's number 1 fan, which has been difficult as he lives in Warriors territory. He loves discussing the GOAT conversation",
+      {
+        withAvatar: false,
+        delay: 9500,
+      }
+    );
+    
+
+    this.addMessageToState(intro);
+    this.addMessageToState(music);
+    this.addMessageToState(sports);
+    this.addMessageToState(powerlifting);
+    this.addMessageToState(basketball);
+  };
+
   handleJavascript = () => {
     this.setState((prevState) => ({
       ...prevState,
@@ -268,6 +372,54 @@ class ActionProvider {
       }
     );
     this.addMessageToState(message5);
+  };
+
+  handleRedux = () => {
+    let message = this.createChatBotMessage(
+      "Redux, in all of it's confusing and powerful glory. Here's some projects!",
+      {
+        withAvatar: true,
+        delay: 1000,
+      }
+    );
+    this.addMessageToState(message);
+    let message2 = this.createChatBotMessage("TuTube", {
+      withAvatar: false,
+      delay: 2000,
+    });
+    this.addMessageToState(message2);
+    let message3 = this.createChatBotMessage(
+      "Ask me about any projects to learn more!",
+      {
+        withAvatar: true,
+        delay: 6000,
+      }
+    );
+    this.addMessageToState(message3);
+  };
+
+  handleMern = () => {
+    let message = this.createChatBotMessage(
+      "Best way to learn MERN is to learn almost all of it's components at once...at least that's what Alex did! Here's some work:",
+      {
+        withAvatar: true,
+        delay: 1000,
+      }
+    );
+    this.addMessageToState(message);
+    let message2 = this.createChatBotMessage("Restaurant Roulette", {
+      withAvatar: false,
+      delay: 2000,
+    });
+    this.addMessageToState(message2);
+    let message3 = this.createChatBotMessage(
+      "Ask me about any projects to learn more!",
+      {
+        withAvatar: true,
+        delay: 6000,
+      }
+    );
+    this.addMessageToState(message3);
   };
 
   handleProjects = () => {

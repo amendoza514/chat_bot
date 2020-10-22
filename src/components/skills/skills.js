@@ -24,23 +24,15 @@ export class Skills extends Component {
         <div
           className="skills-items"
           onClick={() => {
-            this.props.actionProvider.handleFrontend();
+            this.props.actionProvider.handleOtherTechnology();
           }}
         >
-          Front End Technologies
+          Other Technologies
         </div>
         <div
           className="skills-items"
           onClick={() => {
-            this.props.actionProvider.handleBackend();
-          }}
-        >
-          Back End Technologies
-        </div>
-        <div
-          className="skills-items"
-          onClick={() => {
-            this.props.actionProvider.handleAllSkills();
+            this.props.actionProvider.handleEverything();
           }}
         >
           All of the above!
@@ -52,6 +44,7 @@ export class Skills extends Component {
           }}
         >
           Non-Technical 
+          (also called hobbies)
         </div>
       </div>
     );
