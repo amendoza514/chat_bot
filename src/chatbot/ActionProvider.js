@@ -57,17 +57,135 @@ class ActionProvider {
     let message = this.createChatBotMessage("Let's dive into it!", {
       withAvatar: true,
     });
-    let path = this.createChatBotMessage("Where should we start? Select any of these options below, or enter the name in chat", {
+    let path = this.createChatBotMessage(
+      "Where should we start? Select any of these options below, or enter the name in chat",
+      {
         withAvatar: true,
-        widget: 'skills',
-        path: "skills",
+        widget: "skills",
         delay: 1000,
-    });
+      }
+    );
     this.addMessageToState(message);
     this.addMessageToState(path);
   };
 
+  handleLanguages = () => {
+    // this.setState((prevState) => ({
+    //   ...prevState,
+    //   path: "languages",
+    // }));
+    let message = this.createChatBotMessage(
+      "I'll pull up the languages (including SQL) Alex has worked with now",
+      {
+        withAvatar: true,
+      }
+    );
+    let message2 = this.createChatBotMessage(
+      "Languages: JavaScript, Ruby, Python, PostgreSQL, NoSQL (MongoDB)",
+      {
+        withAvatar: false,
+        delay: 1500,
+      }
+    );
+    let message3 = this.createChatBotMessage(
+      "Would you like to see some of the projects leveraging the above skills? Try entering the any of the above options to check!",
+      {
+        withAvatar: true,
+        delay: 2500,
+      }
+    );
+    this.addMessageToState(message);
+    this.addMessageToState(message2);
+    this.addMessageToState(message3);
+  };
+  handleJavascript = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      path: "javascript",
+    }));
+    let message = this.createChatBotMessage(
+      "Alex's first and favorite language! Here are some examples of JS in action, click or enter the names of the projects to see more",
+      {
+        withAvatar: true,
+        delay: 1000,
+        widget: "projects",
+      }
+    );
+    this.addMessageToState(message);
+  };
+
+  handleRuby = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      path: "ruby",
+    }));
+    let message = this.createChatBotMessage(
+      "Alex first true back end dev experiences used Ruby. Click or enter the names of the projects to see more!",
+      {
+        withAvatar: true,
+        delay: 1000,
+        widget: "projects",
+      }
+    );
+    this.addMessageToState(message);
+  };
+
+  handlePython = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      path: "python",
+    }));
+    let message = this.createChatBotMessage(
+      "Alex's first intro to data structures & algorithm were tackled using Python! No projects feature it yet unfortunately"
+    );
+    this.addMessageToState(message);
+  };
+
+  handlePostgres = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      path: "postgres",
+    }));
+    let message = this.createChatBotMessage(
+      "Alex spent over a year as the primary data analyst at Fort Point Beer Company, where he wrote Postgres queries on a daily basis, in addition to using postgres to incorporate Looker into Fort Point's tech stack",
+      {
+        withAvatar: true,
+        delay: 1000,
+      }
+    );
+    this.addMessageToState(message);
+    let message2 = this.createChatBotMessage(
+      "Additionally, Alex has had the chance to build some full stack applications with postgres behind the scenes. Click or enter the names of the projects to see more",
+      {
+        withAvatar: true,
+        delay: 3000,
+        widget: "projects",
+      }
+    );
+    this.addMessageToState(message2);
+  };
+
+  handleNosql = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      path: "nosql",
+    }));
+    let message = this.createChatBotMessage(
+      "Outside of more traditial SQL languages, Alex has also used NoSQL languages like MongoDB with the following, click or enter the names of the projects to see more",
+      {
+        withAvatar: true,
+        delay: 1000,
+        widget: "projects",
+      }
+    );
+    this.addMessageToState(message);
+  };
+
   handleProjects = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      path: "projects",
+    }));
     let message = this.createChatBotMessage(
       "Sure! Here are some of the projects Alex has been working on recently.",
       {

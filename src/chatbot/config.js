@@ -57,6 +57,7 @@ const config = {
     {
       widgetName: "projects",
       widgetFunc: (props) => <Projects {...props} />,
+      mapStateToProps: ["path"],
     },
     {
       widgetName: "project",

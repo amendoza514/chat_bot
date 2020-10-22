@@ -3,11 +3,30 @@ import "./projects.css"
 
 export class Projects extends Component {
   render() {
+    let TTClass = 'projects-items';
+    let BBClass = "projects-items";
+    let RRClass = "projects-items";
+
+    if (this.props.path === "javascript") {
+    } else if (this.props.path === "ruby") {
+      BBClass = 'hide-items'
+      RRClass = "hide-items";
+    } else if (this.props.path === "python") {
+      BBClass = 'hide-items'
+      TTClass = 'hide-items'
+      RRClass = "hide-items";
+    } else if (this.props.path === "postgres") {
+      BBClass = 'hide-items'
+      RRClass = "hide-items";
+    } else if (this.props.path === "nosql") {
+      BBClass = 'hide-items'
+      TTClass = 'hide-items'
+    }
 
     return (
       <div className="projects-container">
         <div
-          className="projects-items"
+          className={TTClass}
           onClick={() => {
             this.props.actionProvider.handleTuTube();
           }}
@@ -15,7 +34,7 @@ export class Projects extends Component {
           TuTube
         </div>
         <div
-          className="projects-items"
+          className={BBClass}
           onClick={() => {
             this.props.actionProvider.handleBubbleBall();
           }}
@@ -23,7 +42,7 @@ export class Projects extends Component {
           Bubble Ball!
         </div>
         <div
-          className="projects-items"
+          className={RRClass}
           onClick={() => {
             this.props.actionProvider.handleRestaurantRoulette();
           }}

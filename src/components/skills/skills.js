@@ -8,7 +8,7 @@ export class Skills extends Component {
         <div
           className="skills-items"
           onClick={() => {
-            this.props.actionProvider.handleTuTube();
+            this.props.actionProvider.handleLanguages();
           }}
         >
           Languages
@@ -16,7 +16,7 @@ export class Skills extends Component {
         <div
           className="skills-items"
           onClick={() => {
-            this.props.actionProvider.handleTuTube();
+            this.props.actionProvider.handleFrameworks();
           }}
         >
           Frameworks
@@ -24,7 +24,7 @@ export class Skills extends Component {
         <div
           className="skills-items"
           onClick={() => {
-            this.props.actionProvider.handleTuTube();
+            this.props.actionProvider.handleFrontend();
           }}
         >
           Front End Technologies
@@ -32,7 +32,7 @@ export class Skills extends Component {
         <div
           className="skills-items"
           onClick={() => {
-            this.props.actionProvider.handleTuTube();
+            this.props.actionProvider.handleBackend();
           }}
         >
           Back End Technologies
@@ -40,7 +40,7 @@ export class Skills extends Component {
         <div
           className="skills-items"
           onClick={() => {
-            this.props.actionProvider.handleTuTube();
+            this.props.actionProvider.handleAllSkills();
           }}
         >
           All of the above!
@@ -48,7 +48,7 @@ export class Skills extends Component {
         <div
           className="skills-items"
           onClick={() => {
-            this.props.actionProvider.handleTuTube();
+            this.props.actionProvider.handleNonTechnical();
           }}
         >
           Non-Technical 

@@ -29,6 +29,36 @@ class MessageParser {
       return;
     }
 
+    if (input.includes("languages")) {
+      this.actionProvider.handleLanguages();
+      return;
+    }
+
+    if (input.includes("javascript") || input.includes("js")) {
+      this.actionProvider.handleJavascript();
+      return;
+    }
+
+    if (input.includes("ruby")) {
+      this.actionProvider.handleRuby();
+      return;
+    }
+
+    if (input.includes("python")) {
+      this.actionProvider.handlePython();
+      return;
+    } 
+    
+    if (input.includes("postgres")) {
+      this.actionProvider.handlePostgres();
+      return;
+    }  
+
+    if (input.includes("nosql") || input.includes("mongo")) {
+      this.actionProvider.handleNosql();
+      return;
+    }          
+
     if (input.includes("skills")) {
       this.actionProvider.handleSkills();
       return;
