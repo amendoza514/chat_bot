@@ -18,8 +18,9 @@ React-chatbot-kit sets up a very general class component hierarchy that allows u
 
 The initial journey begins at the config.js file passed into the <Chabot /> component in the main App.js directory. Custom widgets are created here, as well as initial messages dsiplayed to users, custom css formatting, and state variables to be used later. Custom components flow through this config layer.
 
-Below is a snippet from config.js 
+Below is a mock config.js file created from elements in production.
 
+```sh
 const config = {
   botName: "AlexBot",
   initialMessages: [
@@ -29,13 +30,6 @@ const config = {
       {
         withAvatar: true,
         delay: 2000,
-      }
-    ),
-    createChatBotMessage(
-      `Enter 'Options' to see some ways I can help answer questions about Alex or me!`,
-      {
-        withAvatar: true,
-        delay: 3000,
       }
     ),
     createChatBotMessage(
@@ -71,34 +65,97 @@ const config = {
       widgetFunc: (props) => <Projects {...props} />,
       mapStateToProps: ["path"],
     },
-    {
-      widgetName: "project",
-      widgetFunc: (props) => <Project {...props} />,
-      mapStateToProps: ["path"],
-    },
-    {
-      widgetName: "skills",
-      widgetFunc: (props) => <Skills {...props} />,
-    },
-    {
-      widgetName: "linkedin",
-      widgetFunc: (props) => <Linkedin {...props} />,
-      mapStateToProps: ["path"],
-    },
-    {
-      widgetName: "github",
-      widgetFunc: (props) => <Github {...props} />,
-    },
-  ],
-};
+``` 
 
-export default config;
+Once a user inputs a message, the 'messageParser' kicks in and directs the message to the appropriate path using the 'parse' method.
 
- 
+```sh
+class MessageParser {
+  constructor(actionProvider, state) {
+    this.actionProvider = actionProvider;
+    this.state = state;
+  }
+
+  parse(message) {
+    let input = message.toLowerCase();
+
+    if (input.includes("help")) {
+      this.actionProvider.handleInstructions();
+      return;
+    }
+    if (input.includes("clear")) {
+      this.actionProvider.handleClearScreen();
+      return;
+    }
+
+    if (input.includes("go")) {
+      if (this.state.path === "linkedin") {
+        this.actionProvider.directLinkedin();
+        return;
+      } else if (this.state.path === "github") {
+        this.actionProvider.directGithub();
+        return;
+      } else if (this.state.path === "resume") {
+        this.actionProvider.directResume();
+        return;
+      } else {
+        this.actionProvider.directDefault();
+        return;
+      }
+    }
+
+    if (input.includes("tech")) {
+      if (this.state.path === "tutube") {
+        this.actionProvider.techTuTube();
+        return;
+      } else if (this.state.path === "bubbleball") {
+        this.actionProvider.techBubbleBall();
+        return;
+      } else if (this.state.path === "restaurantroulette") {
+        this.actionProvider.techRestaurantRoulette();
+        return;
+      }
+    }
     
-    ///
-    
-    handleProjects = () => {
+    this.actionProvider.handleError();
+  }
+}
+
+export default MessageParser;
+
+``` 
+
+After parsed in the messageParser, the actionProvider class takes over to define message content and send to the appropriate widget if necessary. The actionProvider also became a state / props staging area to help define paths in the background so that users could simply enter 'go' during certain portions of the chatbot experience and be sent to correct external resources depending on context.
+
+```sh
+class ActionProvider {
+  constructor(createChatBotMessage, setStateFunc, createClientMessage) {
+    this.createChatBotMessage = createChatBotMessage;
+    this.setState = setStateFunc;
+    this.createClientMessage = createClientMessage;
+  }
+  handleClearScreen = () => {
+    let message = this.createChatBotMessage(
+      "You got it! Let me clean up the chat"
+    );
+    let message2 = this.createChatBotMessage(
+      "Remember, you can ask for 'help' if you ever need it!"
+    );
+    this.addMessageToState(message);
+
+    setTimeout(() => {
+      this.setState((prevState) => ({
+        ...prevState,
+        messages: [],
+      }));
+    }, 2000);
+
+    setTimeout(() => {
+      this.addMessageToState(message2);
+    }, 2000);
+  };
+  
+   handleProjects = () => {
     this.setState((prevState) => ({
       ...prevState,
       path: "projects",
@@ -119,57 +176,76 @@ export default config;
     this.addMessageToState(message);
     this.addMessageToState(message2);
   };
+  
+    addMessageToState = (message) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [...prevState.messages, message],
+    }));
+  };
+}
 
-Objects that have collided then get sent to a separate custom algorithm that allows for collisions to 'pop' surrounding targets/projectile based on valid location data and various collision related flags that now live in the targets/projectiles. These collisions and cluster chain-reaction checks are being rendered on every animation frame to allow for fluid gameplay.
+export default ActionProvider;
 
-### Turret Swivel and Projectile Fire Trajectory 
-In order to track turret movement and projectile fire I seeded live mouse position coordinates from the HTML Canvas element to influence subsequent repaints of the turret object [x, y]  endpoints, resulting in a rectangle canvas element that follows the players' mouse in real time. The turret then passes new Projectile objects with these coordinates and slope characteristics to render new projectiles in the correct travel path.
+``` 
 
-Players that selected the *Steph Curry* ability can also utilize an extended version of the mouse tracking turret, which gives players a visual aim reticle to guide shot placement (represented by the *cheatX* and *cheatY* attributes below).
+Finally, appropriate messages are packaged with 'widget' props that can link other components defined by user to display additional content and potentially different actionProvider paths as well.
 
-    
-    swivelTurret(mousePosition) {
-	    this.dx = mousePosition[0] - 160;
-	    this.dy = 540 - mousePosition[1];
-	    let  swivel = Math.atan2(this.dy, this.dx) + Math.PI;
-	    let  hyp = Math.sqrt(this.dy ** 2 + this.dx ** 2);
-	    this.aimX = 160 - Math.cos(swivel) * 50;
-	    this.aimY = 540 + Math.sin(swivel) * 50;
-	    this.cheatX = 160 - Math.cos(swivel) * 550;
-	    this.cheatY = 540 + Math.sin(swivel) * 550;
-	    this.speedX = -Math.cos(swivel) * 12;
-	    this.speedY = Math.sin(swivel) * 12;
+Below is an example of the LinkedIn widget created to handle various link regarding resume, projects and overall profile resources.
+
+```sh
+export class Linkedin extends Component {
+  render() {
+    let link; 
+    if (this.props.path === "resume") {
+      link = "https://www.linkedin.com/in/alex-mendoza-aa4615b5/detail/overlay-view/urn:li:fsd_profileTreasuryMedia:(ACoAABh5UNwBWqBoK86ES8mS-lQTXWNmQJtTq-M,1602639015861)/";
+    } else if (this.props.path === "linkedin") {
+      link = "https://www.linkedin.com/in/alex-mendoza-aa4615b5/";
+    } else if (this.props.path === "publications") {
+      link = "https://scholarship.claremont.edu/cmc_theses/1032/";
     }
+
+     let message;
+     if (this.props.path === "resume") {
+       message = "See it on my LinkedIn!";
+     } else if (this.props.path === "linkedin") {
+       message = "Go to my LinkedIn!";
+     } else if (this.props.path === "publications") {
+       message = "Check it out!";
+     }
     
-    fire() {
-        if (this.game.reloaded === true) {
-		    let  projectile = new  Projectile({
-			    game:  this.game,
-			    slope: [this.speedX, this.speedY],
-			    aimX:  this.aimX,
-			    aimY:  this.aimY,
-			    color:  this.shots[0],
-		    });
-    
-	    this.projectiles += 1;
-	    this.game.reloaded = false;
-	    this.game.addProjectiles(projectile);
-	    this.shots.shift();
-	    this.shots.push(this.randomColor());
-	    }
-    }
+    return (
+      <div className="linkedin-container">
+        <a
+          href={link}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="linkedin-button"
+        >
+          {message}
+        </a>
+      </div>
+    );
+  }
+}
+
+export default Linkedin;
+
+``` 
     
 
 ## Technologies Used
 
  - JavaScript
- - HTML Canvas
+ - React
+ - create-react-app
+ - create-chatbot-kit
+ - netlify (simple hosting)
  - SCSS / CSS
- - howler.js
 
 ## Future Implementations
 
- - Firebase DB for global leaderboard / highscore element
- - Improved 2D Raycasting element to have aim reticle 'bounce' off of walls and show more fluid projectile trajectory paths.
- - Improved collision detection that results in fewer less dropped shots.
+ - Collapsable functionality to reduce footprint in an actual web application.
+ - Improved conversational / contextual abilites that can be supplemented with more hard-coded options or by using various packages available on through npm.
+ - Gmail integration to have direct email capabilites from inside the chatbot.
 
