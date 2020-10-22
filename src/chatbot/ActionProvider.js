@@ -35,9 +35,23 @@ class ActionProvider {
     this.setState((prevState) => ({
       ...prevState,
       path: "resume",
+      directLink: true,
     }));
     this.addMessageToState(message);
   };
+
+  // deleteTest = () => {
+  //   for (let i = 0; i < this.state.messages.length; i++ ) {
+  //     let m = this.state.messages[i]
+
+  //     if (m.directLink) {
+  //       this.setState((prevState) => ({
+  //         ...prevState,
+  //         messages: [...prevState.messages.slice(0, i).concat(...prevState.mesage.slice(i + 1))],
+  //       }));
+  //     }
+  //   }
+  // }
 
   handleSkills = () => {
     let message = this.createChatBotMessage("this is my skillz");
@@ -90,9 +104,10 @@ class ActionProvider {
     let message4 = this.createChatBotMessage(
       "Hit the button below to check out the live site! Or enter 'go' to open up a new tab all the same. OR enter 'tech' to get the full list of technologies used",
       {
-        delay: 6000,
+        delay: 7000,
         withAvatar: true,
         widget: "project",
+        directLink: true,
       }
     );
     this.addMessageToState(message4);
@@ -102,9 +117,9 @@ class ActionProvider {
     }));
   };
 
-  handleBubbleBall = () => {
+  handleRestaurantRoulette = () => {
     let message = this.createChatBotMessage(
-      "Alex's favorite! Bubble Ball is a completely browser run game made only with vanilla JS, HTML Canvas, and Howler.js to play audio samples regardless of browser",
+      "Good choice! Restaurant Roulette is a totally custom application built in the MERN stack that encourages new dining destinations and experiences",
       {
         delay: 1000,
         withAvatar: true,
@@ -112,7 +127,7 @@ class ActionProvider {
     );
     this.addMessageToState(message);
     let message2 = this.createChatBotMessage(
-      "NO other libraries or outside resources were used. Which made this a...challening...game to make. But the result was worth it.",
+      "3 other App Academy students and myself worked to get this project done in about a week! I worked mostly as a full stack engineer, since there was a lot to do, and not a lot of time!",
       {
         delay: 3000,
         withAvatar: true,
@@ -120,7 +135,7 @@ class ActionProvider {
     );
     this.addMessageToState(message2);
     let message3 = this.createChatBotMessage(
-      "Alex was inspired by the NBA's season restart taking place in the orlando 'bubble', and styled the game play off of an arcade classic 'Bust-a-Move'. Players can choose from LeBron James or Steph Curry that provide different abilities.",
+      "Users select a mile radius, a food/drink preference, and spin the wheel! Our Yelp API fetches a random suggestion that hasn't previously been visited",
       {
         delay: 5000,
         withAvatar: true,
@@ -128,7 +143,7 @@ class ActionProvider {
     );
     this.addMessageToState(message3);
     let message4 = this.createChatBotMessage(
-      "Next on the list for features? A global leaderboard. Coming soon!",
+      "If you like the suggestion, users can store the restaurant in list availble in the users profile for later reference, and can sort by a variety of metrics",
       {
         delay: 7000,
         withAvatar: true,
@@ -136,14 +151,72 @@ class ActionProvider {
     );
     this.addMessageToState(message4);
     let message5 = this.createChatBotMessage(
-      "Hit the button below enter 'go' to play! Or enter 'tech' to get the full list of technologies used",
+      "Give it a try! Or enter 'go' to visit, or 'tech' to learn more about the tech stack",
       {
-        delay: 8000,
+        delay: 9000,
         withAvatar: true,
         widget: "project",
+        directLink: true,
       }
     );
     this.addMessageToState(message5);
+    this.setState((prevState) => ({
+      ...prevState,
+      path: "restaurantroulette",
+    }));
+  };
+
+  handleBubbleBall = () => {
+    let message = this.createChatBotMessage(
+      "Alex's favorite! Bubble Ball is a completely browser run game made only with vanilla JS, HTML, and Howler.js to play audio samples regardless of browser",
+      {
+        delay: 1000,
+        withAvatar: true,
+      }
+    );
+    this.addMessageToState(message);
+    let message2 = this.createChatBotMessage(
+      "NO other libraries or outside resources were used. Which made this a...challening...game to make. But worth it!",
+      {
+        delay: 3000,
+        withAvatar: true,
+      }
+    );
+    this.addMessageToState(message2);
+    let message3 = this.createChatBotMessage(
+      "BB was inspired by the NBA's season restart taking place in the Orlando 'bubble', and styled the game play off of an arcade classic 'Bust-a-Move'. Players can choose from LeBron James or Steph Curry that provide different abilities.",
+      {
+        delay: 5000,
+        withAvatar: true,
+      }
+    );
+    this.addMessageToState(message3);
+    let message4 = this.createChatBotMessage(
+      "...even though steph shouldn't be in the same sentence as LeBron...",
+      {
+        delay: 6000,
+        withAvatar: true,
+      }
+    );
+    this.addMessageToState(message4);
+    let message5 = this.createChatBotMessage(
+      "Next on the list for features? A global leaderboard. Coming soon!",
+      {
+        delay: 8000,
+        withAvatar: true,
+      }
+    );
+    this.addMessageToState(message5);
+    let message6 = this.createChatBotMessage(
+      "Hit the button below enter 'go' to play! Or enter 'tech' to get the full list of technologies used",
+      {
+        delay: 10000,
+        withAvatar: true,
+        widget: "project",
+        directLink: true,
+      }
+    );
+    this.addMessageToState(message6);
     this.setState((prevState) => ({
       ...prevState,
       path: "bubbleball",
@@ -169,6 +242,7 @@ class ActionProvider {
       "Enter 'go' to check it out or press the button below",
       {
         widget: "linkedin",
+        directLink: true,
         withAvatar: true,
         delay: 3000,
       }
@@ -187,6 +261,7 @@ class ActionProvider {
       "Travel over to LinkedIn? Press the button below or enter 'go' to open in a new tab",
       {
         widget: "linkedin",
+        directLink: true,
       }
     );
     this.setState((prevState) => ({
@@ -205,13 +280,13 @@ class ActionProvider {
   };
 
   techTuTube = () => {
-    let intro = this.createChatBotMessage(
-      "Let's take a look!",
-      { withAvatar: true, delay: 500 }
-    );
+    let intro = this.createChatBotMessage("Let's take a look!", {
+      withAvatar: true,
+      delay: 500,
+    });
     this.addMessageToState(intro);
     let hosting = this.createChatBotMessage(
-      "Hosting: Heroku (live site), AWS S3 (picture and video storage)", 
+      "Hosting: Heroku (live site), AWS S3 (picture and video storage)",
       { withAvatar: false, delay: 2000 }
     );
     this.addMessageToState(hosting);
@@ -225,6 +300,65 @@ class ActionProvider {
       { withAvatar: false, delay: 4000 }
     );
     this.addMessageToState(backend);
+  };
+
+  techBubbleBall = () => {
+    let intro = this.createChatBotMessage("Sure! Here's a rundown", {
+      withAvatar: true,
+      delay: 500,
+    });
+    this.addMessageToState(intro);
+    let hosting = this.createChatBotMessage("Hosting: GitHub pages", {
+      withAvatar: false,
+      delay: 2000,
+    });
+    this.addMessageToState(hosting);
+    let frontend = this.createChatBotMessage(
+      "Frontend: JavaScript, HTML 5 Canvas, CSS / SCSS",
+      { withAvatar: false, delay: 3000 }
+    );
+    this.addMessageToState(frontend);
+    let backend = this.createChatBotMessage("MISC: Howler.js", {
+      withAvatar: false,
+      delay: 4000,
+    });
+    this.addMessageToState(backend);
+    let end = this.createChatBotMessage("...and that's it!", {
+      withAvatar: true,
+      delay: 6000,
+    });
+    this.addMessageToState(end);
+  };
+
+  techRestaurantRoulette = () => {
+    let intro = this.createChatBotMessage("Got it! Let's look", {
+      withAvatar: true,
+      delay: 500,
+    });
+    this.addMessageToState(intro);
+    let hosting = this.createChatBotMessage("Hosting: Heroku", {
+      withAvatar: false,
+      delay: 2000,
+    });
+    this.addMessageToState(hosting);
+    let frontend = this.createChatBotMessage(
+      "Frontend: Node.js, Express.js, SCSS, React",
+      { withAvatar: false, delay: 3000 }
+    );
+    this.addMessageToState(frontend);
+    let backend = this.createChatBotMessage("Backend: MongoDB, Mongoose", {
+      withAvatar: false,
+      delay: 4000,
+    });
+    this.addMessageToState(backend);
+    let api = this.createChatBotMessage(
+      "API Integrations: Yelp API, Google Map API",
+      {
+        withAvatar: false,
+        delay: 5000,
+      }
+    );
+    this.addMessageToState(api);
   };
 
   directBubbleBall = () => {
@@ -262,6 +396,7 @@ class ActionProvider {
       "Travel over to GitHub? Press the button below or enter 'go' to open in a new tab",
       {
         widget: "github",
+        directLink: true,
       }
     );
     this.setState((prevState) => ({

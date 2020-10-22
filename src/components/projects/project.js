@@ -18,7 +18,7 @@ export class Project extends Component {
     } else if (this.props.path === "bubbleball") {
       message = "Play Bubble Ball!";
     } else if (this.props.path === "restaurantroulette") {
-      message = "Give Restaurant Roulette a spin!";
+      message = "Give R/R a spin!";
     }
 
     return (

@@ -45,7 +45,7 @@ const config = {
     },
   },
   state: {
-    path: null,
+    path: null, directLink: false
   },
   widgets: [
     {

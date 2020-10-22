@@ -39,14 +39,14 @@ class MessageParser {
       return;
     }
 
-    if (input.includes("linkedin")) { 
-      this.actionProvider.handleLinkedin()
+    if (input.includes("linkedin")) {
+      this.actionProvider.handleLinkedin();
       return;
     }
 
     if (input.includes("tutube")) {
-       this.actionProvider.handleTuTube();
-       return;
+      this.actionProvider.handleTuTube();
+      return;
     }
 
     if (
@@ -66,13 +66,13 @@ class MessageParser {
     if (input.includes("github")) {
       this.actionProvider.handleGithub();
       return;
-    } 
-    
+    }
+
     if (input.includes("go")) {
       if (this.state.path === "linkedin") {
         this.actionProvider.directLinkedin();
         return;
-      } else if (this.state.path=== "github") {
+      } else if (this.state.path === "github") {
         this.actionProvider.directGithub();
         return;
       } else if (this.state.path === "resume") {
@@ -123,7 +123,7 @@ class MessageParser {
       return;
     }
 
-    if (emailPoints.some((e) => input.includes(e))) { 
+    if (emailPoints.some((e) => input.includes(e))) {
       this.actionProvider.addEmail();
       return;
     }
