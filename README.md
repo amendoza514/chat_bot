@@ -1,68 +1,252 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Alex Chat-Bot
 
-## Available Scripts
+*Alex Chat-Bot* (https://chat-bot-demo.netlify.app/#/) is JavaScript and React project, bootstrapped using create-react-app and React-chatbot-kit created by Fredrik Oseberg.
 
-In the project directory, you can run:
+# About
 
-### `npm start`
+Alex Chat-Bot was created for and inspired by MintBeans 'hack-the-chatbot' edition of their reoccuring Hackathon events. Using React-chatbot-kit as a starting point, Alex Chat-Bot was built to leverage details regarding Alex Mendoza's (amendoza514 on GitHub) portfolio site under construction, as well as details about personal life that visiting users may be curious about.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Users are prompted by a few short messages that offer a few starting paths to get going with Alex Chat-Bot, as well as reminders to ask for 'help' at anypoint if they are unsure of next moves.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Users can navigate to larger directories like 'Portfolio' or 'Options' that will lead them down very different narrative paths for the chat bot, and allows users to dive into specific details only when prompted to avoid information dumps.
 
-### `npm test`
+Additionally, Alex's projects and work experience are linked to language and framework components under the larger 'skills and technology' umbrella found in the 'portfolio' section, meaning users can explore various technologies and then explore projects that leveraged them during development. Users can then 'go' straight to projects opened up in a new tab to avoid interuppting the chat history, as well as have direct links to LinkedIn, resume details, and GitHub.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Basic App Structure 
+React-chatbot-kit sets up a very general class component hierarchy that allows users to build custom message parsing from scratch, as well as building custom components called 'widgets' that allow selected elements within state to travel to accompanying React elements. 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Config 
+The initial journey begins at the config.js file passed into the <Chabot /> component in the main App.js directory. Custom widgets are created here, as well as initial messages dsiplayed to users, custom css formatting, and state variables to be used later. Custom components flow through this config layer.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Below is a mock config.js file created from elements in production.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+const config = {
+  botName: "AlexBot",
+  initialMessages: [
+    createChatBotMessage(`Hello! Welcome to this demo chat bot program`),
+    createChatBotMessage(
+      `Enter 'Porfolio' and I can help you navigate around this site (will be my portfolio) and see what Alex has been up to`,
+      {
+        withAvatar: true,
+        delay: 2000,
+      }
+    ),
+    createChatBotMessage(
+      `...or enter 'help' at anytime to bring up these options again, and 'clear' to clean up the chat!`,
+      {
+        withAvatar: true,
+        delay: 5000,
+      }
+    ),
+  ],
+  customComponents: {
+    botAvatar: (props) => <BotAvatar {...props} />,
+  },
+  customStyles: {
+    botMessageBox: {
+      backgroundColor: "#376B7E",
+    },
+    chatButton: {
+      backgroundColor: "#5ccc9d",
+    },
+  },
+  state: {
+    path: null,
+    directLink: false,
+  },
+  widgets: [
+    {
+      widgetName: "overview",
+      widgetFunc: (props) => <Overview {...props} />,
+    },
+    {
+      widgetName: "projects",
+      widgetFunc: (props) => <Projects {...props} />,
+      mapStateToProps: ["path"],
+    },
+``` 
+### MessageParser
+Once a user inputs a message, the 'messageParser' kicks in and directs the message to the appropriate path using the 'parse' method.
 
-### `npm run eject`
+```sh
+class MessageParser {
+  constructor(actionProvider, state) {
+    this.actionProvider = actionProvider;
+    this.state = state;
+  }
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  parse(message) {
+    let input = message.toLowerCase();
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    if (input.includes("help")) {
+      this.actionProvider.handleInstructions();
+      return;
+    }
+    if (input.includes("clear")) {
+      this.actionProvider.handleClearScreen();
+      return;
+    }
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    if (input.includes("go")) {
+      if (this.state.path === "linkedin") {
+        this.actionProvider.directLinkedin();
+        return;
+      } else if (this.state.path === "github") {
+        this.actionProvider.directGithub();
+        return;
+      } else if (this.state.path === "resume") {
+        this.actionProvider.directResume();
+        return;
+      } else {
+        this.actionProvider.directDefault();
+        return;
+      }
+    }
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    if (input.includes("tech")) {
+      if (this.state.path === "tutube") {
+        this.actionProvider.techTuTube();
+        return;
+      } else if (this.state.path === "bubbleball") {
+        this.actionProvider.techBubbleBall();
+        return;
+      } else if (this.state.path === "restaurantroulette") {
+        this.actionProvider.techRestaurantRoulette();
+        return;
+      }
+    }
+    
+    this.actionProvider.handleError();
+  }
+}
 
-## Learn More
+export default MessageParser;
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+``` 
+### ActionProvider
+After parsed in the messageParser, the actionProvider class takes over to define message content and send to the appropriate widget if necessary. The actionProvider also became a state / props staging area to help define paths in the background so that users could simply enter 'go' during certain portions of the chatbot experience and be sent to correct external resources depending on context.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+class ActionProvider {
+  constructor(createChatBotMessage, setStateFunc, createClientMessage) {
+    this.createChatBotMessage = createChatBotMessage;
+    this.setState = setStateFunc;
+    this.createClientMessage = createClientMessage;
+  }
+  handleClearScreen = () => {
+    let message = this.createChatBotMessage(
+      "You got it! Let me clean up the chat"
+    );
+    let message2 = this.createChatBotMessage(
+      "Remember, you can ask for 'help' if you ever need it!"
+    );
+    this.addMessageToState(message);
 
-### Code Splitting
+    setTimeout(() => {
+      this.setState((prevState) => ({
+        ...prevState,
+        messages: [],
+      }));
+    }, 2000);
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+    setTimeout(() => {
+      this.addMessageToState(message2);
+    }, 2000);
+  };
+  
+   handleProjects = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      path: "projects",
+    }));
+    let message = this.createChatBotMessage(
+      "Sure! Here are some of the projects Alex has been working on recently.",
+      {
+        widget: "projects",
+      }
+    );
+    let message2 = this.createChatBotMessage(
+      "Which would you like to learn more about? Select any options above or enter the name in the chat",
+      {
+        delay: 1000,
+        withAvatar: true,
+      }
+    );
+    this.addMessageToState(message);
+    this.addMessageToState(message2);
+  };
+  
+    addMessageToState = (message) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [...prevState.messages, message],
+    }));
+  };
+}
 
-### Analyzing the Bundle Size
+export default ActionProvider;
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+``` 
+### Custom Components / Widgets
+Finally, appropriate messages are packaged with 'widget' props that can link other components defined by user to display additional content and potentially different actionProvider paths as well.
 
-### Making a Progressive Web App
+Below is an example of the LinkedIn widget created to handle various link regarding resume, projects and overall profile resources.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+```sh
+export class Linkedin extends Component {
+  render() {
+    let link; 
+    if (this.props.path === "resume") {
+      link = "https://www.linkedin.com/in/alex-mendoza-aa4615b5/detail/overlay-view/urn:li:fsd_profileTreasuryMedia:(ACoAABh5UNwBWqBoK86ES8mS-lQTXWNmQJtTq-M,1602639015861)/";
+    } else if (this.props.path === "linkedin") {
+      link = "https://www.linkedin.com/in/alex-mendoza-aa4615b5/";
+    } else if (this.props.path === "publications") {
+      link = "https://scholarship.claremont.edu/cmc_theses/1032/";
+    }
 
-### Advanced Configuration
+     let message;
+     if (this.props.path === "resume") {
+       message = "See it on my LinkedIn!";
+     } else if (this.props.path === "linkedin") {
+       message = "Go to my LinkedIn!";
+     } else if (this.props.path === "publications") {
+       message = "Check it out!";
+     }
+    
+    return (
+      <div className="linkedin-container">
+        <a
+          href={link}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="linkedin-button"
+        >
+          {message}
+        </a>
+      </div>
+    );
+  }
+}
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+export default Linkedin;
 
-### Deployment
+``` 
+    
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Technologies Used
 
-### `npm run build` fails to minify
+ - JavaScript
+ - React
+ - create-react-app
+ - create-chatbot-kit
+ - netlify (simple hosting)
+ - SCSS / CSS
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Future Implementations
+
+ - Collapsable functionality to reduce footprint in an actual web application.
+ - Improved conversational / contextual abilites that can be supplemented with more hard-coded options or by using various packages available on through npm.
+ - Gmail integration to have direct email capabilites from inside the chatbot.
+
