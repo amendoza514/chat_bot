@@ -27,7 +27,7 @@ class ActionProvider {
 
   handleResume = () => {
     let message = this.createChatBotMessage(
-      "I'll attach a resume preview below, or click the button below to view on LinkedIn",
+      "I'll attach a resume preview below (once integrated into actual portfolio site), or click the button below to view on LinkedIn",
       {
         widget: "linkedin",
       }
@@ -204,7 +204,7 @@ class ActionProvider {
       }
     );
     let sports = this.createChatBotMessage(
-      "Sports: Alex started swimming at age 6, and swam competeively through college at Claremont McKenna College. A distance freestyle specialist, Alex excelled at staving off not passing out. Alex still holds the 1000 free CMC pool record, and is not bitter about having his 1650 freestyle school record beaten recently at all",
+      "Sports: Alex started swimming at age 6, and swam competeively through college at Claremont McKenna College. A distance freestyle specialist, Alex excelled at staving off not passing out. Alex is not bitter about having his 1650 freestyle school record beaten after his senior year at all",
       {
         withAvatar: false,
         delay: 4500,
@@ -218,7 +218,7 @@ class ActionProvider {
       }
     );
     let basketball = this.createChatBotMessage(
-      "NBA: Alex thinks about the NBA too much, evident in several projects themed around the sport. Alex considers himself LeBron's number 1 fan, which has been difficult as he lives in Warriors territory. He loves discussing the GOAT conversation",
+      "NBA: Alex thinks about the basketball too much, evident in several projects themed around the sport. Alex considers himself LeBron's number 1 fan, which has been difficult as he lives in Warriors territory. He loves discussing the GOAT conversation",
       {
         withAvatar: false,
         delay: 10500,
