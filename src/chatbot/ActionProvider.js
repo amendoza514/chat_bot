@@ -69,6 +69,13 @@ class ActionProvider {
     this.addMessageToState(path);
   };
 
+  handleName = () => {
+    let message = this.createChatBotMessage("My name is AlexBot. That's all he could come up with at the time", {
+      withAvatar: true,
+    });
+    this.addMessageToState(message);
+  };
+
   handleOptions = () => {
     let message = this.createChatBotMessage("No problem!", {
       withAvatar: true,
@@ -202,9 +209,12 @@ class ActionProvider {
   };
 
   handleIceBreaker = () => {
-    let robot = this.createChatBotMessage("I'm a robot so my state of being is completely irrelevant", {
-      withAvatar: true,
-    });
+    let robot = this.createChatBotMessage(
+      "I'm a robot so my state of being is completely irrelevant",
+      {
+        withAvatar: true,
+      }
+    );
     this.addMessageToState(robot);
     let human = this.createChatBotMessage(
       "Alex, however, is doing fine! If you want to follow up, you can ask for his phone or email",
@@ -214,6 +224,29 @@ class ActionProvider {
       }
     );
     this.addMessageToState(human);
+  };
+
+  handleSpiel = () => {
+    let a1 = this.createChatBotMessage("Sure!", {
+      withAvatar: true,
+    });
+    this.addMessageToState(a1);
+    let a2 = this.createChatBotMessage(
+      "I'm a robot chat assistant for Alex Mendoza, a software developer currently located in San Francisco but frequently visiting LA and Santa Barbara where most of his family lives!",
+      {
+        withAvatar: true,
+        delay: 1000,
+      }
+    );
+    this.addMessageToState(a2);
+    let a3 = this.createChatBotMessage(
+      "My purpose is mainly to help visitors walk through his portfolio and experiences, but Alex was gratious enough to program me with some personality to answer questions outside of work and technology",
+      {
+        withAvatar: true,
+        delay: 2000,
+      }
+    );
+    this.addMessageToState(a3);
   };
 
   handleOtherTechnology = () => {

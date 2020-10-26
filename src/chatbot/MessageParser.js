@@ -98,8 +98,18 @@ class MessageParser {
       return;
     };
 
-      if (input.includes("how are you")) {
+    if (input.includes("how are you")) {
       this.actionProvider.handleIceBreaker();
+      return;
+    };
+
+    if (input.includes("tell me") && input.includes("about") && input.includes("you")) {
+      this.actionProvider.handleSpiel();
+      return;
+    };
+
+    if (input.includes("whats your name")) {
+      this.actionProvider.handleName();
       return;
     };
 
