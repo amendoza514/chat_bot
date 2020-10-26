@@ -93,6 +93,11 @@ class MessageParser {
       return;
     };
 
+    if (input.includes("sport")) {
+      this.actionProvider.handleSport();
+      return;
+    };
+
     if (input.includes("rails")) {
       this.actionProvider.handleRails();
       return;

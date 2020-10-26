@@ -74,14 +74,14 @@ class ActionProvider {
       withAvatar: true,
     });
     let path = this.createChatBotMessage(
-      "You can ask me a variety of things about Alex including questions like: 'Let's look at Alex's projects', 'what languages are you comfortable with?', 'what frameworks have you used?', 'any publications?', 'can I see your resume?', 'what's the best way to contact you?'...",
+      "You can ask me a variety of things about Alex including questions like: 'Look at Alex's projects', 'what languages are you comfortable with?', 'what frameworks have you used?', 'any publications?', 'can I see your resume?', 'what's the best way to contact you?'...",
       {
         withAvatar: true,
         delay: 1000,
       }
     );
     let path2 = this.createChatBotMessage(
-      "These can also be worded as one word questions based on particular areas of the conversation you are in: 'email', 'skills', 'TuTube?', 'JavaScript'...",
+      "These can also be worded as one word questions based on particular areas of the conversation you are in: 'email', 'skills', 'TuTube?', 'JavaScript' or 'JS'...",
       {
         withAvatar: true,
         delay: 3000,
@@ -95,8 +95,10 @@ class ActionProvider {
       }
     );
     let help = this.createChatBotMessage(
-      "And remember, you can ask for 'help' if you ever need it!",{
-        delay: 7000
+      "And remember, you can ask for 'help' if you ever need it!",
+      {
+        withAvatar: true,
+        delay: 7000,
       }
     );
     this.addMessageToState(message);
@@ -164,6 +166,24 @@ class ActionProvider {
     this.addMessageToState(message);
     this.addMessageToState(message2);
     this.addMessageToState(message3);
+  };
+
+  handleSport = () => {
+    let nba = this.createChatBotMessage(
+      "Alex is a huge NBA fan and can be seen chewing fingernails in crunch time whenever LeBron is playing. He also considers himself a sneaker collecter and can spot a full basketball team with shoes, depsite not knowing how to play himself.",
+      {
+        withAvatar: true,
+      }
+    );
+    this.addMessageToState(nba);
+    let swim = this.createChatBotMessage(
+      "Alex's real sport growing up, however, was swim and water polo. He swam through college and was the captain of the CMS Stags, which went undefeated in conference competition from 2011 to 2015",
+      {
+        withAvatar: true,
+        delay: 2000
+      }
+    );
+    this.addMessageToState(swim);
   };
 
   handleOtherTechnology = () => {
