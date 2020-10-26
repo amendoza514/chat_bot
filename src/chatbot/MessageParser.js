@@ -29,6 +29,11 @@ class MessageParser {
       return;
     }
 
+    if (input.includes("options")) {
+      this.actionProvider.handleOptions();
+      return;
+    }
+
     if (input.includes("language")) {
       this.actionProvider.handleLanguages();
       return;

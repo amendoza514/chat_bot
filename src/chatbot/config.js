@@ -13,14 +13,14 @@ const config = {
   initialMessages: [
     createChatBotMessage(`Hello! Welcome to this demo chat bot program`),
     createChatBotMessage(
-      `Enter 'Porfolio' and I can help you navigate around this site (will be my portfolio) and see what Alex has been up to`,
+      `Enter 'porfolio' and I can help you navigate around this site (will be my portfolio) and see what Alex has been up to`,
       {
         withAvatar: true,
         delay: 2000,
       }
     ),
     createChatBotMessage(
-      `Enter 'Options' to see some ways I can help answer questions about Alex or me!`,
+      `Enter 'options' to see a list of questions I can answer!`,
       {
         withAvatar: true,
         delay: 3000,

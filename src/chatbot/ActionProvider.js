@@ -69,6 +69,43 @@ class ActionProvider {
     this.addMessageToState(path);
   };
 
+  handleOptions = () => {
+    let message = this.createChatBotMessage("No problem!", {
+      withAvatar: true,
+    });
+    let path = this.createChatBotMessage(
+      "You can ask me a variety of things about Alex including questions like: 'Let's look at Alex's projects', 'what languages are you comfortable with?', 'what frameworks have you used?', 'any publications?', 'can I see your resume?', 'what's the best way to contact you?'...",
+      {
+        withAvatar: true,
+        delay: 1000,
+      }
+    );
+    let path2 = this.createChatBotMessage(
+      "These can also be worded as one word questions based on particular areas of the conversation you are in: 'email', 'skills', 'TuTube?', 'JavaScript'...",
+      {
+        withAvatar: true,
+        delay: 3000,
+      }
+    );
+    let path3 = this.createChatBotMessage(
+      "You can ask about non-technical things too! Things like: 'favorite sport', 'hobbies', 'tell me about yourself','how are you doing?, 'what college did you go to?', 'past jobs?'...",
+      {
+        withAvatar: true,
+        delay: 5000,
+      }
+    );
+    let help = this.createChatBotMessage(
+      "And remember, you can ask for 'help' if you ever need it!",{
+        delay: 7000
+      }
+    );
+    this.addMessageToState(message);
+    this.addMessageToState(path);
+    this.addMessageToState(path2);
+    this.addMessageToState(path3);
+    this.addMessageToState(help);
+  };
+
   handleLanguages = () => {
     // this.setState((prevState) => ({
     //   ...prevState,
@@ -224,7 +261,6 @@ class ActionProvider {
         delay: 10500,
       }
     );
-    
 
     this.addMessageToState(intro);
     this.addMessageToState(music);
