@@ -88,7 +88,7 @@ class ActionProvider {
       }
     );
     let path3 = this.createChatBotMessage(
-      "You can ask about non-technical things too! Things like: 'favorite sport', 'hobbies', 'tell me about yourself','how are you doing?, 'what college did you go to?', 'past jobs?'...",
+      "You can ask about non-technical things too! Things like: 'favorite sport', 'hobbies', 'tell me about yourself', or 'how are you doing?",
       {
         withAvatar: true,
         delay: 5000,
@@ -180,10 +180,40 @@ class ActionProvider {
       "Alex's real sport growing up, however, was swim and water polo. He swam through college and was the captain of the CMS Stags, which went undefeated in conference competition from 2011 to 2015",
       {
         withAvatar: true,
-        delay: 2000
+        delay: 2000,
       }
     );
     this.addMessageToState(swim);
+  };
+
+  handleColor = () => {
+    let color = this.createChatBotMessage("My favorite color is #50C878", {
+      withAvatar: true,
+    });
+    this.addMessageToState(color);
+    let color2 = this.createChatBotMessage(
+      "Alex's favorite color is emerald green",
+      {
+        withAvatar: true,
+        delay: 1000,
+      }
+    );
+    this.addMessageToState(color2);
+  };
+
+  handleIceBreaker = () => {
+    let robot = this.createChatBotMessage("I'm a robot so my state of being is completely irrelevant", {
+      withAvatar: true,
+    });
+    this.addMessageToState(robot);
+    let human = this.createChatBotMessage(
+      "Alex, however, is doing fine! If you want to follow up, you can ask for his phone or email",
+      {
+        withAvatar: true,
+        delay: 1000,
+      }
+    );
+    this.addMessageToState(human);
   };
 
   handleOtherTechnology = () => {
@@ -860,7 +890,7 @@ class ActionProvider {
 
   contactPlug = () => {
     let message = this.createChatBotMessage(
-      "Sure! Let me bring you to my contact page, or feel free to reach me at:",
+      "Sure! Let me bring you to his contact page, or feel free to reach Alex at:",
       { withAvatar: true }
     );
     this.addMessageToState(message);
@@ -882,7 +912,7 @@ class ActionProvider {
   };
 
   addPhone() {
-    let message = this.createChatBotMessage("Give me a call at: ", {
+    let message = this.createChatBotMessage("Give Alex a call at: ", {
       withAvatar: true,
     });
     this.addMessageToState(message);
@@ -895,7 +925,7 @@ class ActionProvider {
   }
 
   addEmail() {
-    let message = this.createChatBotMessage("Reach me at: ", {
+    let message = this.createChatBotMessage("Reach Alex via email at: ", {
       withAvatar: true,
     });
     this.addMessageToState(message);

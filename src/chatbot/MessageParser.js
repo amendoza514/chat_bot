@@ -98,6 +98,16 @@ class MessageParser {
       return;
     };
 
+      if (input.includes("how are you")) {
+      this.actionProvider.handleIceBreaker();
+      return;
+    };
+
+    if (input.includes("color")) {
+      this.actionProvider.handleColor();
+      return;
+    };
+
     if (input.includes("rails")) {
       this.actionProvider.handleRails();
       return;
