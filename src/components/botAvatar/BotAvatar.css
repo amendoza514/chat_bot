@@ -31,6 +31,18 @@
     text-align: left;
 }
 
+.react-chatbot-kit-chat-inner-container {
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+.react-chatbot-kit-chat-btn-send {
+    border-bottom-right-radius: 15px;
+}
+
+.react-chatbot-kit-chat-header {
+    border-top-left-radius: 15px;
+}
+
 .react-chatbot-kit-chat-container {
     position: relative;
     width: 320px;
