@@ -1,6 +1,6 @@
 # Alex Chat-Bot
 
-*Alex Chat-Bot* (https://chat-bot-demo.netlify.app/#/) is JavaScript and React project, bootstrapped using create-react-app and React-chatbot-kit created by Fredrik Oseberg.
+*Alex Chat-Bot* (https://chat-bot-demo.netlify.app/#/) is JavaScript and React project, bootstrapped using create-react-app and react-chatbot-kit created by Fredrik Oseberg.
 
 # About
 
